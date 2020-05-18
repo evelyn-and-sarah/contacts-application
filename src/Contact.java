@@ -29,6 +29,7 @@ public class Contact {
 //        readFile(contactFilePath, true);
 
 
+        readFile(contactFilePath, true);
         showOptions();
 
     }
