@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Contact {
     public static void main(String[] args){
@@ -24,17 +25,30 @@ public class Contact {
         List<String> contactList = Arrays.asList("Michael Jordan | 3120998170", "Lady Gaga | 7138250777", "Daniel Craig | 5820171995");
         writeFile(contactFilePath, contactList);
 
+        //print out each line in the file
+//        readFile(contactFilePath, true);
 
 
-
-//        showOptions();
+        showOptions();
 
     }
     public static void showOptions(){
+        while(true) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("1. View contacts. \n 2. Add a new contact. \n 3. Search a contact by name. \n 4. Delete " +
+                    "an existing contact. \n 5. Exit. \n Enter an option (1, 2, 3, 4, or 5): ");
+            String inp = sc.nextLine();
 
-        System.out.println("1. View contacts. \n 2. Add a new contact. \n 3. Search a contact by name. \n 4. Delete " +
-                "an existing contact. \n 5. Exit. \n Enter an option (1, 2, 3, 4, or 5): ");
+            String directory = "data";
+            String filename = "contacts.txt";
+            Path contactFilePath = Paths.get(directory, filename);
 
+            if (inp.equals("1")) {
+                readFile(contactFilePath, true);
+            }
+            break;
+
+        }
     }
 
     public static void createDir(Path aDirectory) {
@@ -71,9 +85,25 @@ public class Contact {
 
     }
 
-    //if (! Files.exists(dataFile)) {
-    //    Files.createFile(dataFile);
-    //}
-    //inside the main method ^^^^
-    //the actual method to add the contacts will be in the other method
+    public static List<String> readFile(Path aFile, boolean print) {
+        List<String> lines;
+        try {
+            lines = Files.readAllLines(aFile);
+            if(print == true) {
+                for(String line:lines) {
+                    System.out.println(line);
+                }
+//                return null;
+            }
+            return lines;
+        }catch(IOException e) {
+            System.out.println("Problem reading the file.");
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+
 }
