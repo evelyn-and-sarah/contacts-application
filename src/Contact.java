@@ -15,6 +15,10 @@ public class Contact {
         //create a directory
         createDir(dataDirectory);
 
+        //create a file
+        createNewFile(dataFile);
+
+
 
 //        showOptions();
 
@@ -38,6 +42,17 @@ public class Contact {
     }
 
 
+    public static void createNewFile(Path aFile) {
+        if(Files.notExists(aFile)) {
+            try {
+                Files.createFile(aFile);
+            }catch (IOException e) {
+                System.out.println("Problem creating the file.");
+                e.printStackTrace();
+            }
+
+        }
+    }
 
     //if (! Files.exists(dataFile)) {
     //    Files.createFile(dataFile);
