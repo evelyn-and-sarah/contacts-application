@@ -146,15 +146,17 @@ public class Contact {
             try {
                 List<String> lines = Files.readAllLines(contactFilePath);
                 for (String line : lines) {
-                    if (line.contains(userSearch.toLowerCase())) {
+                    if (line.toLowerCase().contains(userSearch.toLowerCase())) {
                         System.out.println(line);
                     }
-                    else {
-                        System.out.println("Invalid input.");
-                    }
+
                 }
-
-
+//                for (String line: lines) {
+//                    if(!line.contains(userSearch.toLowerCase())) {
+//                        System.out.println("Contact not found.");
+//                    }
+//                }
+                break;
 
             } catch (IOException e) {
                 System.out.println("Problem searching for contact.");
