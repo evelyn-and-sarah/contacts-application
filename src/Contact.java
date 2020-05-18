@@ -62,8 +62,12 @@ public class Contact {
                     System.out.println("Problem adding new contact.");
                     e.printStackTrace();
                 }
+            }else if(inp.equals("5")){
+                //exit the application
+                quit();
+                break;
             }
-            break;
+
 
         }
     }
@@ -121,6 +125,10 @@ public class Contact {
             return null;
         }
 
+    }
+
+    public static void quit(){
+        System.out.println("Goodbye.");
     }
 
 //    public static void addContact(Path aFile, List<String> aList, StandardOpenOption.APPEND){
