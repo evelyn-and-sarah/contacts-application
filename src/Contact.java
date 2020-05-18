@@ -107,6 +107,8 @@ public class Contact {
         try {
             lines = Files.readAllLines(aFile);
             if (print == true) {
+                System.out.println("Name | Phone Number");
+                System.out.println("-------------------");
                 for (String line : lines) {
                     System.out.println(line);
                 }
