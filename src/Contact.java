@@ -49,9 +49,12 @@ public class Contact {
             if (inp.equals("1")) {
                 readFile(contactFilePath, true);
             } else if (inp.equals("2")) {
-                System.out.println("Enter name and phone number: ");
-                String newContact = sc.nextLine();
-                List<String> newItem = Arrays.asList(newContact);
+                System.out.println("Enter name: ");
+                String newName = sc.nextLine();
+                System.out.println("Enter phone number: ");
+                String newPhone = sc.nextLine();
+                List<String> newItem = Arrays.asList(newName + " | " + newPhone);
+
                 try {
                     Files.write(
                             contactFilePath,
