@@ -133,26 +133,25 @@ public class Contact {
 
     }
 
-    public static void deleteContact() {
+    public static void deleteContact(){
         Scanner sc = new Scanner(System.in);
         String directory = "data";
         String filename = "contacts.txt";
         Path contactFilePath = Paths.get(directory, filename);
-        System.out.println("Enter an existing contact to delete:");
+        System.out.println("Enter a contact to delete.");
         String deletedName = sc.nextLine();
-        try {
+        try{
             List<String> lines = Files.readAllLines(contactFilePath);
             List<String> newList = new ArrayList<>();
-            for (String line : lines) {
-                if (line.contains(deletedName)) {
-                    newList.add("");
+            for(String line : lines){
+                if(line.contains(deletedName)){
                     continue;
                 }
                 newList.add(line);
             }
             writeFile(contactFilePath, newList);
-        } catch (IOException e) {
-            System.out.println("Problem reading file.");
+        }catch(IOException e){
+            System.out.println("Problem deleting contact.");
             e.printStackTrace();
         }
     }
