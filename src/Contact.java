@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -65,7 +66,24 @@ public class Contact {
                     System.out.println("Problem adding new contact.");
                     e.printStackTrace();
                 }
-            }else if(inp.equals("5")){
+            } else if (inp.equals("4")) {
+//                readFile(contactFilePath, true);
+                try {
+                    List<String> lines = Files.readAllLines(contactFilePath);
+                    List<String> newList = new ArrayList<>();
+                    for (String line : lines) {
+                        if (line.contains("Michael")) {
+                            newList.add("");
+                            continue;
+                        }
+                        newList.add(line);
+                    }
+                    writeFile(contactFilePath, newList);
+                } catch (IOException e) {
+                    System.out.println("Problem reading file.");
+                    e.printStackTrace();
+                }
+            } else if (inp.equals("5")) {
                 //exit the application
                 quit();
                 break;
@@ -130,7 +148,7 @@ public class Contact {
 
     }
 
-    public static void quit(){
+    public static void quit() {
         System.out.println("Goodbye.");
     }
 
