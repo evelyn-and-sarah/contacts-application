@@ -67,7 +67,7 @@ public class Contact {
                     e.printStackTrace();
                 }
             }else if(inp.equals("3")){
-                searchContact();
+                System.out.println("searchContact() = " + searchContact());
             }else if (inp.equals("4")) {
                 deleteContact();
             } else if (inp.equals("5")) {
@@ -135,7 +135,7 @@ public class Contact {
 
     }
 
-    public static void searchContact(){
+    public static String searchContact(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Search Contacts: ");
         String userSearch = sc.nextLine();
@@ -145,19 +145,15 @@ public class Contact {
         while(true) {
             try {
                 List<String> lines = Files.readAllLines(contactFilePath);
+
                 for (String line : lines) {
                     if (line.toLowerCase().contains(userSearch.toLowerCase())) {
-                        System.out.println(line);
+                        return line;
                     }
 
                 }
-//                for (String line: lines) {
-//                    if(!line.contains(userSearch.toLowerCase())) {
-//                        System.out.println("Contact not found.");
-//                    }
-//                }
-                break;
-
+                System.out.println("Contact not found.");
+                return searchContact();
             } catch (IOException e) {
                 System.out.println("Problem searching for contact.");
                 e.printStackTrace();
