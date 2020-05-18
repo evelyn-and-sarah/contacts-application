@@ -24,8 +24,8 @@ public class Contact {
         createNewFile(contactFilePath);
 
         //write 3 contacts to the file
-        List<String> contactList = Arrays.asList("Michael Jordan | 3120998170", "Lady Gaga | 7138250777", "Daniel Craig | 5820171995");
-        writeFile(contactFilePath, contactList);
+//        List<String> contactList = Arrays.asList();
+//        writeFile(contactFilePath, contactList);
 
         //print out each line in the file
 //        readFile(contactFilePath, true);
