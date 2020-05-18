@@ -66,7 +66,9 @@ public class Contact {
                     System.out.println("Problem adding new contact.");
                     e.printStackTrace();
                 }
-            } else if (inp.equals("4")) {
+            }else if(inp.equals("3")){
+                searchContact();
+            }else if (inp.equals("4")) {
                 deleteContact();
             } else if (inp.equals("5")) {
                 //exit the application
@@ -129,6 +131,35 @@ public class Contact {
             System.out.println("Problem reading the file.");
             e.printStackTrace();
             return null;
+        }
+
+    }
+
+    public static void searchContact(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Search Contacts: ");
+        String userSearch = sc.nextLine();
+        String directory = "data";
+        String filename = "contacts.txt";
+        Path contactFilePath = Paths.get(directory, filename);
+        while(true) {
+            try {
+                List<String> lines = Files.readAllLines(contactFilePath);
+                for (String line : lines) {
+                    if (line.contains(userSearch.toLowerCase())) {
+                        System.out.println(line);
+                    }
+                    else {
+                        System.out.println("Invalid input.");
+                    }
+                }
+
+
+
+            } catch (IOException e) {
+                System.out.println("Problem searching for contact.");
+                e.printStackTrace();
+            }
         }
 
     }
