@@ -67,22 +67,7 @@ public class Contact {
                     e.printStackTrace();
                 }
             } else if (inp.equals("4")) {
-//                readFile(contactFilePath, true);
-                try {
-                    List<String> lines = Files.readAllLines(contactFilePath);
-                    List<String> newList = new ArrayList<>();
-                    for (String line : lines) {
-                        if (line.contains("Michael")) {
-                            newList.add("");
-                            continue;
-                        }
-                        newList.add(line);
-                    }
-                    writeFile(contactFilePath, newList);
-                } catch (IOException e) {
-                    System.out.println("Problem reading file.");
-                    e.printStackTrace();
-                }
+                deleteContact();
             } else if (inp.equals("5")) {
                 //exit the application
                 quit();
@@ -148,22 +133,32 @@ public class Contact {
 
     }
 
+    public static void deleteContact() {
+        Scanner sc = new Scanner(System.in);
+        String directory = "data";
+        String filename = "contacts.txt";
+        Path contactFilePath = Paths.get(directory, filename);
+        System.out.println("Enter an existing contact to delete:");
+        String deletedName = sc.nextLine();
+        try {
+            List<String> lines = Files.readAllLines(contactFilePath);
+            List<String> newList = new ArrayList<>();
+            for (String line : lines) {
+                if (line.contains(deletedName)) {
+                    newList.add("");
+                    continue;
+                }
+                newList.add(line);
+            }
+            writeFile(contactFilePath, newList);
+        } catch (IOException e) {
+            System.out.println("Problem reading file.");
+            e.printStackTrace();
+        }
+    }
+
     public static void quit() {
         System.out.println("Goodbye.");
     }
-
-//    public static void addContact(Path aFile, List<String> aList, StandardOpenOption.APPEND){
-////        try {
-////            Files.write(
-////                    aFile,
-////                    aList,
-////                    StandardOpenOption.APPEND
-////            );
-////        }catch (IOException e){
-////            System.out.println("Problem adding new contact.");
-////            e.printStackTrace();
-////        }
-//    }
-
 
 }
