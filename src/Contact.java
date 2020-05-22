@@ -154,7 +154,7 @@ public class Contact {
                     }
 
                 }
-                System.out.println("Contact not found.");
+                System.out.println("Contact not found!");
                 return searchContact();
             } catch (IOException e) {
                 System.out.println("Problem searching for contact.");
@@ -169,11 +169,18 @@ public class Contact {
         String directory = "data";
         String filename = "contacts.txt";
         Path contactFilePath = Paths.get(directory, filename);
-        System.out.println("Enter a contact to delete.");
+        System.out.println("Enter a contact to delete:");
         String deletedName = sc.nextLine();
         try{
             List<String> lines = Files.readAllLines(contactFilePath);
             List<String> newList = new ArrayList<>();
+
+//            for (String line : lines) {
+//                if ( !(line.toLowerCase().contains(deletedName.toLowerCase())) ){
+//                    System.out.println("Contact not found!");
+//                    showOptions();
+//                }
+//            }
             for(String line : lines){
                 if(line.toLowerCase().contains(deletedName.toLowerCase())){
                     continue;
