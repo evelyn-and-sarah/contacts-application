@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Contact {
+
+
     public static void main(String[] args) {
         //save the directory and file names in variables
         String directory = "data";
@@ -124,7 +126,6 @@ public class Contact {
                 for (String line : lines) {
                     System.out.println(line);
                 }
-//                return null;
             }
             return lines;
         } catch (IOException e) {
@@ -175,12 +176,6 @@ public class Contact {
             List<String> lines = Files.readAllLines(contactFilePath);
             List<String> newList = new ArrayList<>();
 
-//            for (String line : lines) {
-//                if ( !(line.toLowerCase().contains(deletedName.toLowerCase())) ){
-//                    System.out.println("Contact not found!");
-//                    showOptions();
-//                }
-//            }
             for(String line : lines){
                 if(line.toLowerCase().contains(deletedName.toLowerCase())){
                     continue;
