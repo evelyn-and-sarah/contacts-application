@@ -173,7 +173,7 @@ public class Contact {
             List<String> lines = Files.readAllLines(contactFilePath);
             List<String> newList = new ArrayList<>();
             for(String line : lines){
-                if(line.contains(deletedName)){
+                if(line.toLowerCase().contains(deletedName.toLowerCase())){
                     continue;
                 }
                 newList.add(line);
