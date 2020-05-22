@@ -67,7 +67,7 @@ public class Contact {
                     e.printStackTrace();
                 }
             }else if(inp.equals("3")){
-                System.out.println("searchContact() = " + searchContact());
+                System.out.println(searchContact());
             }else if (inp.equals("4")) {
                 deleteContact();
             } else if (inp.equals("5")) {
@@ -146,6 +146,8 @@ public class Contact {
             try {
                 List<String> lines = Files.readAllLines(contactFilePath);
 
+                System.out.println("Name | Phone Number");
+                System.out.println("-------------------");
                 for (String line : lines) {
                     if (line.toLowerCase().contains(userSearch.toLowerCase())) {
                         return line;
